@@ -24,11 +24,15 @@ router.post("/RecoverResetPass",UsersController.RecoverResetPass);
 
 
 router.post("/createTask",AuthVerifyMiddleware,TasksController.createTask);
+
 router.get("/updateTaskStatus/:id/:status/:Priority",AuthVerifyMiddleware,TasksController.updateTaskStatus);
+
 router.get("/listTaskByStatus/:status",AuthVerifyMiddleware,TasksController.listTaskByStatus);
 router.get("/listTaskByPriority/:priority",AuthVerifyMiddleware,TasksController.listTaskByPriority);
+
 router.get("/taskStatusCount",AuthVerifyMiddleware,TasksController.taskStatusCount);
 router.get("/taskPriorityCount",AuthVerifyMiddleware,TasksController.taskPriorityCount);
+
 router.get("/deleteTask/:id",AuthVerifyMiddleware,TasksController.deleteTask);
 
 
