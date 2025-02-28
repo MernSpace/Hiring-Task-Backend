@@ -30,15 +30,15 @@ app.use(express.urlencoded({limit: '50mb'}));
 // Body Parser Implement
 app.use(bodyParser.json())
 
+require('dotenv').config();
 // Request Rate Limit
 const limiter= rateLimit({windowMs:15*60*1000,max:3000})
 app.use(limiter)
 
 
-let URI = "mongodb+srv://<username>:<password>@cluster0.g7zuc4b.mongodb.net/task?retryWrites=true&w=majority"
 const local = 'mongodb://localhost:27017/auth'
-let Option = { user: 'sifat355y', pass: 'gKowylzIvl736M3I', autoIndex: true, useNewUrlParser: true, useUnifiedTopology: true }
-mongoose.connect(URI,Option)
+let Option = { user: process.env.USER, pass: process.env.PASSWORD, autoIndex: true, useNewUrlParser: true, useUnifiedTopology: true }
+mongoose.connect(process.env.MNGOBD_URL,Option)
     .then(() => {
         console.log('Connection Success');
     })
